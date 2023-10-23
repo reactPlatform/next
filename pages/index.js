@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import MeetupList from '../components/meetups/MeetupList'
 import { useEffect,useState } from 'react'
 import { MongoClient } from 'mongodb'
+import Head from 'next/head'
 const DummyMeetups = [
     {
         id: 'm1',
@@ -25,7 +26,18 @@ useEffect(()=>{
     setLoadedMeetups(DummyMeetups);
 },[])
 
-  return <MeetupList meetups={loadedMeetups}/>
+  return (
+    <Fragment>
+        <Head>
+      <title>Home Page</title>
+      <meta 
+      name='description'
+      content='This is home page for this nextjs application'
+      />
+    </Head>
+    <MeetupList meetups={loadedMeetups}/>
+    </Fragment>
+  )
 }
 
 
